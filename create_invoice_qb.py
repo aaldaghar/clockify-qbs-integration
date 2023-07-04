@@ -1,4 +1,4 @@
-#import Constants
+import Constants
 import json
 import requests
 import get_hrs_clockify
@@ -25,8 +25,8 @@ logger.addHandler(f_handler)
 
 def create_qb_invoice():
     hours = get_hrs_clockify.get_clockify_billable_hours()
-    url = '{0}/v3/company/{1}/invoice?minorversion=65'.format(QBO_BASE_URL, qbo_auth_client.realm_id)
-    auth_header = 'Bearer {0}'.format(qbo_auth_client.access_token)
+    url = '{0}/v3/company/{1}/invoice?minorversion=65'.format(QBO_BASE_URL, Constants.anqbo_auth_client.realm_id)
+    auth_header = 'Bearer {0}'.format(Constants.qbo_auth_client.access_token)
     headers = {
         'Authorization': auth_header,
         'Content-Type': 'application/json'
@@ -108,31 +108,8 @@ def create_qb_invoice():
         }, 
        ],
         "CustomerRef": {
-        "value": "4",
-        "name": "Lawrence Berkeley National Laboratory"
-       },
-        "CustomerMemo": {
-        "value": "Please contact us at asma.samano@protonmail.com for any questions."
-       },
-        "BillAddr": {
-        "Id": "30",
-        "Line1": "Lawrence Berkeley National Laboratory",
-        "Line2": "1 Cyclotron Rd.",
-        "Line3": "Berkeley, CA  94720 USA"
-       },
-        "ShipAddr": {
-        "Id": "31",
-        "Line1": "Lawrence Berkeley National Laboratory",
-        "Line2": "1 Cyclotron Rd.",
-        "Line3": "Berkeley, CA  94720 USA"
-       },
-        "ShipFromAddr": {
-        "Id": "32",
-        "Line1": "null"
-       },
-       "SalesTermRef": {
-        "value": "2",
-        "name": "Net 15"
+        "value": "1",
+        "name": "Sample"
        },
        })
     response = requests.request("POST", url, headers=headers, data=payload)
