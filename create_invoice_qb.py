@@ -4,7 +4,10 @@ import requests
 import get_hrs_clockify
 import logging
 
-#logger
+#setup qbo base url
+QBO_BASE_URL =  'https://quickbooks.api.intuit.com'
+
+# Create logger
 logger = logging.getLogger('qb_invoice')
 # Create handlers
 c_handler = logging.StreamHandler()
@@ -19,10 +22,6 @@ f_handler.setFormatter(f_format)
 # Add handlers to the logger
 logger.addHandler(c_handler)
 logger.addHandler(f_handler)
-
-#setup qbo base url
-QBO_BASE_URL =  'https://quickbooks.api.intuit.com'
-
 
 def create_qb_invoice():
     hours = get_hrs_clockify.get_clockify_billable_hours()
