@@ -1,4 +1,4 @@
 # Constants and Logs #
 ######################
 *.log
-*Constants.py
+Constants.py
